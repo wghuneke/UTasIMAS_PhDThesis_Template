@@ -1,0 +1,75 @@
+% thesis.tex (starting point of a UTas mathematics thesis)
+
+% Note that the following defaults are also contained in the 'report' class
+% (this is not exhaustive...see appropriate references for all options)
+% 'oneside' mode...overide with 'twoside' to force output for two-sided printing.
+% 'final' mode...overide with 'draft' to see linebreak malfunctioning.
+% For example, to use two-sided printing one would declare the 'documentclass'
+% as follows...
+% '\documentclass[11pt,a4paper,twoside]{report}'
+%
+% Specific Mathematical options are as follows
+% 'leqno' to force equation numbering on the left side of the page.
+% 'fleqn' to force formulas to flush left (centered is the default).
+% If 'fleqn' is specified then the left indent is controlled with '\mathindent'.
+% i.e. '\setlength{\mathindent}{2.5cm}'
+
+% Declare overall type of document (use 11pt report class on A4 paper).
+\documentclass[11pt,a4paper]{report}
+
+% If you want to generate an index you should include the following command
+% which puts a makeindex command in the preamble. Additionally, you need to un-comment
+% the file 'index' in the '\includeonly' command below and also include the 'index'
+% file in the main document.
+\makeindex
+
+% Include the style file which contains all the required formatting
+% information that is set out in the Research Higher Degrees Resource
+% Handbook (2003 version). NOTE: This file uses the following packages
+% 'graphicx' for graphics manipulation
+% 'fancyhdr' for nice headers and footers.
+% 'makeidx' for generating the index
+% 'tocbibind' for adding table of contents entries for bibliography, index etc.
+% 'sectsty' for generating stylised chapter and section headings.
+% You will need to make sure your LaTeX installation has these packages
+% installed...else it wont work :(
+\usepackage{mathphdthesis}
+
+% Here you would include any additional packages that you want to use.
+% You should make sure they don't clash with the above packages that
+% are in use in the style file.
+
+% Specify which pieces (other .tex files) you plan to include. You can comment
+% out files that you will include later or have already finished to speed
+% up TeX processing
+\includeonly{
+prelude % Contains all the relevant candidate information (name, degrees, abstract etc)
+,newcom % Place all you new commands in here
+,chap1  % The first chapter
+,chap2  % The second chapter
+,chap3  % The third chapter
+,chap4  % The fourth chapter
+,app0   % Needed to switch to appendix mode
+,app1   % The first appendix
+,app2   % The second appendix
+,biby   % Makes the bibliography from the BibTeX database
+,index  % Places the index in the thesis
+}
+
+% Begin the thesis
+\begin{document}
+
+% Include all the pieces of your thesis in here.
+\include{prelude}
+\include{newcom}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{app0}
+\include{app1}
+\include{app2}
+\include{biby}
+\include{index}
+
+\end{document}

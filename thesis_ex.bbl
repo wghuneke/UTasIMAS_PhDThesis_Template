@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{Dutton:CW}
+J.~A. Dutton.
+\newblock {\em The Ceaseless Wind: An Introduction to the Theory of Atmospheric
+  Motion}.
+\newblock McGraw-Hill, 1976.
+
+\bibitem{Thuburn:NSR}
+J.~Thuburn and Y.~Li.
+\newblock Numerical simulations of rossby-haurwitz waves.
+\newblock {\em Tellus A}, 52:181--189, 2000.
+
+\bibitem{Williamson:STS}
+D.~L. Williamson, J.~B. Drake, J.~J. Hack, R.~Jakob, and Swarztrauber~P. N.
+\newblock A standard test set for numerical approximations to the shallow water
+  equations in spherical geometry.
+\newblock {\em J. Comput. Phys.}, 102:211--224, 1992.
+
+\end{thebibliography}

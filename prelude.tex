@@ -1,0 +1,36 @@
+% prelude.tex (specification of which features in `mathphdthesis.sty' you
+% are using, your personal information, and your title & abstract)
+
+% Specify features of `mathphdthesis.sty' you want to use:
+\titlepgtrue % main title page (required)
+\signaturepagetrue % page for declaration of originality (required)
+\copyrighttrue % copyright page (required)
+\abswithesistrue % abstract to be bound with thesis (optional)
+\acktrue % acknowledgments page (optional)
+\tablecontentstrue % table of contents page (required)
+\tablespagetrue % table of contents page for tables (required only if you have tables)
+\figurespagetrue % table of contents page for figures (required only if you have figures)
+
+\title{PLACE THESIS TITLE HERE} % use all capital letters
+\author{Your Name} % use mixed upper & lower case
+\prevdegrees{B.A. B.Sc. Hons (Qld)} % Used to specify your previous degrees...use mixed upper & lower case
+\advisor{Dr Ask Me} % example: Professor Lawrence K. Forbes
+\dept{Mathematics} % your academic department
+\submitdate{August, 2004} % month & year of your thesis submission
+
+\newcommand{\abstextwithesis}
+{Basic abstract goes here. Can use paragraphs and normal \LaTeX
+commands.
+
+For example, I looked at the problem $a^n+b^n=c^n$ and found some
+integer solutions for $n>2$! Suck on that Fermat!}
+
+\newcommand{\acknowledgement}
+{Thank all your helpers here.}
+
+
+% Take care of things in `mathphdthesis.sty' behind the scenes.
+% Basically just does a check of all the fields that have been activated
+% above and fills out the appropriate pages and adds them to the thesis.
+\beforepreface
+\afterpreface
