@@ -1,0 +1,332 @@
+% Style file to assist in generating a University
+% of Tasmania PhD thesis at the Institute for Marine and Antarctic Studies. 
+% Contains all the required formatting options and header/footer information 
+% that is set out in the
+% Research Higher Degrees Resource Handbook (2003 version)
+% This file should be easily modifiable to comply with
+% minor formatting changes (such as the left margin width etc.)
+
+% First set the required page format...margins, text widths etc.
+% Note 1in=2.54cm and LaTeX has a fixed border of 1in on top and left
+% margins so we need to take this into account when calculating sizes.
+% Set the top margin to be 1inch from the paper edge.
+\setlength{\topmargin}{0.0cm}
+% Set the header-body separation level
+\setlength{\headsep}{1.0cm}
+% Set the footskip to be 1 cm
+\setlength{\footskip}{1cm}
+% Set the header height to be 1cm
+\setlength{\headheight}{1cm}
+% Set the bottom margin to be 1 inch from the paper edge by
+% way of the \paperheight and \textheight commands
+% First set up a new length called \textheit
+\newlength{\textheit}
+% Set the value of \textheit to the total paper height for
+% the paper size declared in the \documentclass command
+\setlength{\textheit}{\paperheight}
+% Subtract off 1 inch from top and bottom of the paper
+\addtolength{\textheit}{-2.0in}
+% Subtract off the \topmargin height
+\addtolength{\textheit}{-\topmargin}
+% Subtract off the \headheight height
+\addtolength{\textheit}{-\headheight}
+% Subtract off the \headsep height
+\addtolength{\textheit}{-\headsep}
+% Subtract off the \footskip height
+\addtolength{\textheit}{-\footskip}
+% Finally, set the text height to that calculated above
+\setlength{\textheight}{\textheit}
+% Set the text to flush to the bottom of each page
+%\flushbottom
+
+% Uncomment the following lines (all lines that start with \...)
+% if you want even and odd pages to look alike.
+% Set the odd and even left margins to be 4.5cm from paper edge.
+% Note that 4.50cm-2.54cm=1.96cm
+%\setlength{\oddsidemargin}{1.96cm}
+%\setlength{\evensidemargin}{1.96cm}
+% Set the right margin to be 1 inch from the paper edge by
+% way of the \paperwidth and \textwidth commands
+% First set up a new length called \textwid
+%\newlength{\textwid}
+% Set the value of \textwid to the total paper width for
+% the paper size declared in the \documentclass command
+%\setlength{\textwid}{\paperwidth}
+% Subtract off 1 inch from each side of the paper
+%\addtolength{\textwid}{-2.0in}
+% Subtract off the \oddsidemargin width
+%\addtolength{\textwid}{-\oddsidemargin}
+% Finally, set the text width to that calculated above
+%\setlength{\textwidth}{\textwid}
+% Set the paragraph spacing
+%\setlength{\parskip}{6pt}
+% Set the paragraph indentation level
+%\setlength{\parindent}{0pt}
+
+
+% Load the graphicx package
+\usepackage{graphicx}
+
+% Load the makeidx package for easy index generation
+\usepackage{makeidx}
+
+% Load the changes package for highlighting changes in the text.
+\usepackage{changes}
+
+% Load the amsmath package.
+\usepackage{amsmath} 
+
+% Load the tocbibin package for putting in table of
+% contents entries for the bibliograpy and index.
+\usepackage{tocbibind}
+% Set the table of contents name
+\settocname{TABLE OF CONTENTS}
+% Set the list of figures name
+\setlofname{LIST OF FIGURES}
+% Set the list if tables name
+\setlotname{LIST OF TABLES}
+% Set the bibliograpy name
+\settocbibname{REFERENCES}
+% Set the index name
+\setindexname{INDEX}
+
+
+% Load the sectsty package for generating stylised
+% chapter and section headings.
+\usepackage{sectsty}
+% Set the Chapter font specifications
+%\chapterfont{\nohang\rmfamily\centering}
+% Set the Section font specifications
+\sectionfont{\nohang\rmfamily\centering}
+% Set the Subsection font specifications
+%\subsectionfont{\nohang\rmfamily\raggedright}
+% Set the Subsubsection font specifications
+%\subsubsectionfont{\nohang\rmfamily\raggedright}
+
+
+% Load the fancy headers package for manipulating
+% the material that appears in the headers and footers.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% Set up the default behavior for headers and footers
+% use \thepage to control the location of the page number
+\fancyhead[L]{} \fancyhead[C]{\rightmark} \fancyhead[R]{}
+\fancyfoot[L]{} \fancyfoot[C]{\thepage} \fancyfoot[R]{}
+% Set the header and footer rule width to 0.0pt
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% Now take care of all the user specific entries like
+% the title, author, abstract, table of contents etc.
+
+% Use this so LaTeX can differentiate user defined commands
+% from internal ones. Modifies how LaTeX interprets the @ symbol...
+\makeatletter
+
+% Set some basic lengths
+\newlength{\li} \setlength{\li}{12pt}
+\newlength{\signed} \settowidth{\signed}{signedd}
+\newcommand{\singlespace}{\baselineskip 1.5\li}
+\newcommand{\doublespace}{\baselineskip 2.0\li}
+
+% Defines new 'if' variables for boolean checks
+\newif\iftitlepg \titlepgtrue
+\newif\ifsignaturepage \signaturepagetrue
+\newif\ifdefemptypage \defemptypagetrue 
+\newif\ifcopyright \copyrighttrue
+\newif\ifcoauthor \coauthortrue 
+\newif\ifabswithesis \abswithesistrue
+\newif\ifack \acktrue
+\newif\iftablecontents \tablecontentstrue
+\newif\iftablespage \tablespagefalse
+\newif\iffigurespage \figurespagetrue 
+
+
+
+% Redefine the chapter commands for nicer formatting
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering \reset@font
+    \ifnum \c@secnumdepth >\m@ne
+         \normalfont \LARGE \rmfamily \scshape \@chapapp{} \thechapter  % Chapter followed by number
+         \par
+         \vskip 20\p@
+       \fi
+    \normalfont \Huge \rmfamily  #1\par          % chapter title
+    \nobreak
+    \vskip 40\p@
+  }}
+
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering
+    \reset@font
+    \normalfont \Huge \rmfamily  #1\par
+    \nobreak
+    \vskip 40\p@
+  }}
+
+
+% Helpful command for making prefaces and the like
+\def\prefacesection#1{%
+    {\null\vskip .50in 
+    \begin{center}
+        {\normalfont \Huge \rmfamily {#1 \vskip 2\li}}
+    \end{center}}}
+
+% Gets the information about the author, title etc from the file
+% 'prelude.tex' and populates the relevant fields.
+\def\dept#1{\gdef\@dept{#1}}
+\def\advisor{\gdef\@advisor}
+\def\prevdegrees{\gdef\@prevdegrees}
+\def\submitdate#1{\gdef\@submitdate{#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}} 
+\def\@title{}
+\def\@author{}
+\def\@dept{}
+\def\@submitdate{\ifcase\the\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space \number\the\year}
+\ifnum\month=12
+    \@tempcnta=\year \advance\@tempcnta by 1
+    \edef\@copyrightyear{\number\the\@tempcnta}
+\else
+    \def\@copyrightyear{\number\the\year}
+\fi
+
+% Command to make the title page
+\def\titlepg{%
+    \newpage
+    \pagenumbering{roman}
+    \thispagestyle{empty}%
+    \singlespace
+        \null\vskip0.25in
+    \begin{center}
+        {\Large\uppercase\expandafter{\@title}}
+    \end{center}
+    \null\vskip0.25in
+    \begin{center}
+       \rm  by\\
+    \end{center}
+    \null\vskip0.25in
+    \begin{center}
+       \rm \large\@author \\  \@prevdegrees\\
+    \end{center}
+    \null\vskip0.25in
+    \begin{center}
+           {\rm 
+                \vskip \li 
+            Submitted in fulfilment of the requirements \\
+            for the Degree of Doctor of Philosophy\\}
+    \end{center}
+    \null\vskip0.25in
+    \begin{center}
+          {\rm \large {\@dept}\\
+          Some other affiliation\\
+          University of Tasmania\\
+          {\@submitdate} \\
+          \null\vskip0.25in
+          \begin{figure*}[h!]
+          \begin{center}
+          \scalebox{.10}{\includegraphics{UniTas_IMAS_P_Pos_RGB}}
+          \end{center}
+          \end{figure*}}
+    \end{center}
+    \vfill}
+
+% Add an empty page after the title page
+\def\defemptypage{
+    \newpage
+    % Set up the default behavior for headers and footers
+    \thispagestyle{empty}
+    \prefacesection{}
+    \defempty
+}
+
+% Command to make the declaration of originality
+\def\signaturepage{%
+    \newpage
+    \null\vfill
+    \thispagestyle{empty}%
+    \begin{quote}
+        {\normalsize This thesis contains no material which has been accepted for a degree or diploma by the University or any other institution, except by way of background information and duly acknowledged in the thesis, and to the best of my knowledge and belief no material previously published or written by another person except where due acknowledgement is made in the text of the thesis, nor does the thesis contain any material that infringes copyright.}
+    \end{quote}
+    \null\vskip0.5in
+    \begin{quote}
+    {Signed:  \hrulefill \hfill
+        \newline\hspace*{\signed} \raisebox{4.0mm}{\@author}
+        \newline
+        Date:  \today}
+    \end{quote}
+    \vskip 1.0in
+    \vfill}
+
+% Command to make the copyright page
+\def\copyrightpage{%
+    \newpage
+    \null\vfill
+    \thispagestyle{empty}%
+    \begin{quote}
+        {\normalsize This thesis may be made available for loan and limited copying and communication in accordance with the {\sl Copyright Act 1968}.}
+    \end{quote}
+    \null\vskip0.5in
+    \begin{quote}
+    {Signed:  \hrulefill \hfill
+        \newline\hspace*{\signed} \raisebox{4.0mm}{\@author}
+        \newline
+        Date:  \today}
+    \end{quote}
+    \vskip 1.0in
+    \vfill}
+
+% Command to make the co-autherhsip page
+\def\coauthor{
+    \newpage
+    % Set up the default behavior for headers and footers
+    \thispagestyle{empty}
+    \prefacesection{STATEMENT ON CO-AUTHORSHIP}
+    \coauthorship
+}
+
+% Command to make the acknowledgements page
+\def\ackpage{
+    \newpage
+    % Set up the default behavior for headers and footers
+    \thispagestyle{empty}
+    \prefacesection{ACKNOWLEDGEMENTS}
+    \acknowledgement
+}
+
+% Command to make the abstract page
+\def\abswithesis{
+    \newpage
+    % Set up the default behavior for headers and footers
+    \thispagestyle{empty}
+    \prefacesection{ABSTRACT}
+    \abstextwithesis
+}
+
+% Sets up all the stuff before the table of contents.
+\def\beforepreface{
+\iftitlepg\titlepg\fi
+\ifdefemptypage\defemptypage\fi
+\ifsignaturepage\signaturepage\fi
+\ifcopyright\copyrightpage\fi
+\ifcoauthor\coauthor\fi
+\ifabswithesis\abswithesis\fi
+\ifack\ackpage\fi
+}
+
+% Takes care of the table of contents, figures etc 
+\def\afterpreface{
+\pagestyle{fancy}
+\setcounter{page}{0}
+\iftablecontents\tableofcontents\fi
+\iftablespage\listoftables\fi
+\iffigurespage\listoffigures\fi
+}
+
+% Reset the behaviour of the @ symbol
+\makeatother

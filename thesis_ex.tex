@@ -1,0 +1,78 @@
+% thesis_ex.tex (starting point of a UTas IMAS thesis)
+
+% Declare overall type of document (use 12pt report class on A4 paper).
+%\documentclass[12pt,a4paper,onesided]{report}    % one-sided printing
+\documentclass[12pt,a4paper,twoside]{report}     % two-sided printing
+
+% In case you want to print the thesis and need to swap the margins (inner margin needs to be wider for binding according to 'Print Tasmania'), uncomment the following lines:
+%\let\tmp\oddsidemargin
+%\let\oddsidemargin\evensidemargin
+%\let\evensidemargin\tmp
+%\reversemarginpar    
+
+% If you want to generate an index you should include the following command
+% which puts a makeindex command in the preamble. Additionally, you need to un-comment
+% the file 'index' in the '\includeonly' command below and also include the 'index'
+% file in the main document. (An index is an alphabetical list of words/expressions 
+% with the pages where they can be found. Use \index{} in the main text to add a word.)
+\makeindex
+
+% Include the style file which contains all the required formatting
+% information that is set out in the Research Higher Degrees Resource
+% Handbook (2003 version). NOTE: This file uses the following packages
+% 'graphicx' for graphics manipulation
+% 'fancyhdr' for nice headers and footers.
+% 'makeidx' for generating the index
+% 'tocbibind' for adding table of contents entries for bibliography, index etc.
+% 'sectsty' for generating stylised chapter and section headings.
+% You will need to make sure your LaTeX installation has these packages
+% installed...else it wont work :(
+\usepackage{imasphdthesis}
+
+% Here you can include any additional packages that you want to use.
+% You should make sure they don't clash with the above packages that
+% are in use in the style file.
+\usepackage{acronym}         % Automatic acronyms
+\usepackage{natbib}          % Add natbib to change the reference style
+\bibliographystyle{apalike}  % Define the reference style (change if you want a different style)
+\usepackage{hyperref}        % Enables hyper referencing (to jump to reference/figure/chapter)
+\hypersetup{hidelinks=true}  % No box around links, but hyperref still works
+
+% Specify which pieces (other .tex files) you plan to include. You can comment
+% out files that you will include later or have already finished to speed
+% up TeX processing
+\includeonly{
+prelude  % Contains all the relevant candidate information (name, degrees, abstract etc)
+,newcom  % Place all you new commands in here
+,acronym % List of acronyms used in thesis
+,chap1   % The first chapter (usually introduction)
+,chap2   % The second chapter (first result chapter)
+,chap3   % The third chapter (second result chapter)
+,chap4   % The fourth chapter (third result chapter)
+,chap5   % The fifth chapter (discussion and conclusion)
+,app0    % Needed to switch to appendix mode
+,app1    % The first appendix
+,app2    % The second appendix
+,biby    % Makes the bibliography from the BibTeX database
+,index   % Places the index in the thesis
+}
+
+% Begin the thesis
+\begin{document}
+
+% Include all the pieces of your thesis in here.
+\include{prelude}
+\include{newcom}
+\include{acronym}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{app0}
+\include{app1}
+\include{app2}
+\include{biby}
+\include{index}
+
+\end{document}

@@ -1,0 +1,86 @@
+% prelude.tex (specification of which features in `imasphdthesis.sty' you
+% are using, your personal information, and your title & abstract)
+
+% Specify features of `imasphdthesis.sty' you want to use: (*true or *fals)
+\titlepgtrue % main title page (required)
+\defemptypagetrue % include this for empty page (to have odd pages aligning with odd page numbers)
+\signaturepagetrue % page for declaration of originality (required)
+\copyrighttrue % copyright page (required)
+\coauthortrue % \coauthorfals if you don't need to declare co-authorship
+\abswithesistrue % abstract to be bound with thesis (optional)
+\acktrue % acknowledgments page (optional)
+\tablecontentstrue % table of contents page (required)
+\tablespagetrue % table of contents page for tables (required only if you have tables)
+\figurespagetrue % table of contents page for figures (required only if you have figures)
+
+\title{PLACE THESIS TITLE HERE} % use all capital letters
+\author{Your Name} % use mixed upper & lower case
+\prevdegrees{M.Sc. B.Sc. Hons} % Used to specify your previous degrees...use mixed upper & lower case
+\advisor{Dr Ask Me} % example: Professor Lawrence K. Forbes
+\dept{Institute for Marine and Antarctic Studies} % your academic department
+\date{} 
+%\submitdate{Jan, 2000} % alternatively: month & year of your thesis submission
+
+\newcommand{\defempty}{\thispagestyle{empty}}
+
+% Example text for co-authorship declaration. Can be changed. 
+\newcommand{\coauthorship}
+{\noindent The following people and institutions contributed to the publication of work undertaken as part of this thesis.\\
+
+\noindent Paper 1 / Chapter \ref{chap2}: Title of published work:
+\begin{itemize}
+\item Your Name, Candidate, University of Tasmania (80\%)
+\item Co-author 1, Supervisor, University of Tasmania (10\%)
+\item Co-author 2, Supervisor, Some other affiliation (10\%)
+\end{itemize}
+
+\vspace*{1cm}
+\noindent Details of authors roles:\\
+
+\noindent Co-author 1 contributed with ...\\
+
+\noindent Ca-author 2 contributed with ...
+
+\newpage
+\thispagestyle{empty}
+\noindent We, the undersigned, agree with the above stated ``proportion of work undertaken'' for the above published and peer-reviewed manuscript contributing to this thesis:
+
+\vspace*{2cm}
+Signed: \hrulefill
+
+\hspace*{0mm}\phantom{Signed: }Name of primary supervisor
+
+\hspace*{0mm}\phantom{Signed: }Supervisor
+
+\hspace*{0mm}\phantom{Signed: }University of Tasmania
+
+\hspace*{0mm}\phantom{Signed: }Institute for Marine and Antarctic Studies
+
+\hspace*{0mm}\phantom{Signed: }Date: \today
+
+\vspace*{2cm}
+Signed: \hrulefill
+
+\hspace*{0mm}\phantom{Signed: }Name of head of centre
+
+\hspace*{0mm}\phantom{Signed: }Head of centre, Oceans \& Cryosphere % Or change to your centre affiliation
+
+\hspace*{0mm}\phantom{Signed: }University of Tasmania
+
+\hspace*{0mm}\phantom{Signed: }Institute for Marine and Antarctic Studies
+
+\hspace*{0mm}\phantom{Signed: }Date: \today
+}
+
+
+\newcommand{\acknowledgement}
+{Thank all your helpers/funders here.}
+
+\newcommand{\abstextwithesis}
+{Basic abstract goes here. Can use paragraphs and normal \LaTeX commands.}
+
+% Takes care of things in `imasphdthesis.sty' behind the scenes.
+% Basically just does a check of all the fields that have been activated
+% above and fills out the appropriate pages and adds them to the thesis.
+\beforepreface
+\afterpreface

@@ -1,0 +1,58 @@
+% chap1.tex (Chapter 1 of the thesis)
+
+% Set page numbering to arabic the first time we commence a chapter.
+% This is required to get the page numbering correct.
+\pagenumbering{arabic}
+
+% Note that the text in the [] brackets is the one that will
+% appear in the table of contents, whilst the text in the {}
+% brackets will appear in the main thesis.
+\chapter[Introduction]{INTRODUCTION}
+\label{chap1}
+
+\section{New Section}
+Here's the text for section 1. You put your normal LaTeX commands
+in here.
+
+\newpage
+\section{New Section}
+Here we have started a new page to show how the headers work. The
+text in the header should be the last section title declared at
+the end of the current page.
+
+This new paragraph shows how to set \index{index items}index items
+and \index{index items!subindex items} subindex items.
+
+\subsection{New Subsection}
+Here's a subsection with some simple maths $a^2+b^2=c^2$.
+
+\subsubsection{Subsubsection}
+Here's a \index{subsubsection}subsubsection and an example of how to use acronyms: The \ac{SO} connects all ocean basins.
+
+\newpage
+Some more text to check indent and show how references work
+\cite{Williamson:STS}.
+
+Here's how we place a figure (Figure \ref{fig:utas}) on the page.
+\begin{figure}[hbtp]
+\begin{center}
+\scalebox{.10}{\includegraphics{UniTas_IMAS_P_Pos_RGB}} 
+\caption{\label{fig:utas} The UTas logo.}
+\end{center}
+\end{figure}
+
+And finally, here's a table example (Table \ref{tab:taba}).
+\begin{table}[hbtp]
+\caption{\label{tab:taba}A simple table.}
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+$n=$&2&3&4&5\\
+\hline
+$c$ (rad/day)&1.67&0.52&0.06&-0.17\\
+\hline
+period (days)&3.75&12.00&100.00&37.50\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
