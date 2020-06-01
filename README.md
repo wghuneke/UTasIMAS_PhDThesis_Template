@@ -1,4 +1,4 @@
-# UTasIMAD_PhDThesis_Template
+# UTasIMAS_PhDThesis_Template
 A Latex template for a PhD thesis at the Institute for Marine and Antarctic Studies at the University of Tasmania.
 
 This template is a slightly modified version provided by
